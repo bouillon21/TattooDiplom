@@ -25,7 +25,7 @@ class RegFragment : Fragment() {
 
     private var mDatabaseReference: DatabaseReference? = null
     private var mDatabase: FirebaseDatabase? = null
-    private lateinit var mAuth: FirebaseAuth
+    private var mAuth = FirebaseAuth.getInstance()
     private val TAG = "CreateAccountActivity"
 
     override fun onCreateView(
