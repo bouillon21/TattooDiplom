@@ -25,6 +25,8 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        if (mAuth.currentUser != null)
+            updateUI()
         btnListeners()
         return binding.root
     }
