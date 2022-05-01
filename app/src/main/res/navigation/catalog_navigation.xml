@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/catalog_navigation"
+    app:startDestination="@id/nav_catalog">
+
+    <fragment
+        android:id="@+id/nav_catalog"
+        android:name="com.diplom.tattoo.ui.catalog.CatalogFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_catalog" >
+        <action
+            android:id="@+id/action_nav_catalog_to_nav_current_tattoo"
+            app:destination="@id/nav_current_tattoo" />
+        <action
+            android:id="@+id/action_nav_catalog_to_nav_your_sketch"
+            app:destination="@id/nav_your_sketch" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_current_tattoo"
+        android:name="com.diplom.tattoo.ui.catalog.CurrentTattooFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_current_tattoo" >
+        <argument
+            android:name="current_tattoo"
+            app:argType="com.diplom.tattoo.data.Tatu" />
+        <action
+            android:id="@+id/action_nav_current_tattoo_to_nav_record"
+            app:destination="@id/nav_record" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_record"
+        android:name="com.diplom.tattoo.ui.catalog.RecordFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_record">
+        <argument
+            android:name="current_tattoo"
+            app:argType="com.diplom.tattoo.data.Tatu" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_your_sketch"
+        android:name="com.diplom.tattoo.ui.catalog.YourSketchFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_your_sketch">
+        <argument
+            android:name="current_tattoo"
+            app:argType="com.diplom.tattoo.data.Tatu" />
+        <action
+            android:id="@+id/action_nav_your_sketch_to_nav_record"
+            app:destination="@id/nav_record" />
+    </fragment>
+</navigation>

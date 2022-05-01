@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_navigation"
+    app:startDestination="@id/nav_profile">
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.diplom.tattoo.ui.profile.ProfileFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_nav_profile_to_nav_edit_profile"
+            app:destination="@id/nav_edit_profile" />
+        <action
+            android:id="@+id/action_nav_profile_to_nav_my_notes"
+            app:destination="@id/nav_my_notes" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_edit_profile"
+        android:name="com.diplom.tattoo.ui.profile.EditProfileFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_edit_profile" />
+
+    <fragment
+        android:id="@+id/nav_my_notes"
+        android:name="com.diplom.tattoo.ui.profile.MyNotesFragment"
+        android:label="fragment_my_notes"
+        tools:layout="@layout/fragment_my_notes" />
+
+</navigation>

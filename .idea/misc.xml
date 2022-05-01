@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/Tattoo/app/src/main/res/drawable-v24/border.xml" value="0.3635" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/drawable-v24/corner_rectangle.xml" value="0.1935" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/drawable-v24/home.xml" value="0.1935" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/drawable-v24/person.xml" value="0.1935" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/drawable-v24/spiner_background.xml" value="0.1935" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/drawable-v24/where.xml" value="0.1935" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/font/roboto.xml" value="0.3927083333333333" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/activity_main.xml" value="0.3625" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/corner_info_item.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/fragment_current_tattoo.xml" value="0.14722222222222223" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/fragment_edit_profile.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/fragment_home.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/fragment_profile.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/fragment_record.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/fragment_your_sketch.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/my_notes_item.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/photo_gallery_info_item.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/layout/photo_gallery_item.xml" value="0.18541666666666667" />
+        <entry key="..\:/Android/Tattoo/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

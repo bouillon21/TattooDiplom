@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ImageAvatar">
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ImageContact">
+        <item name="cornerRadius">1000dp</item>
+    </style>
+    <style name="DefaultButtonStyle">
+        <item name="android:background">@drawable/corner_rectangle</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="MainHeaderStyle">
+        <item name="android:textSize">@dimen/Header</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="DefaultHeaderStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+</resources>

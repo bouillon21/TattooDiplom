@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">DiplomTattoo</string>
+    <string name="Profile">Профиль</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="recording">Записи</string>
+    <string name="MyRecordings">Мои записи</string>
+    <string name="settings">Настройки</string>
+    <string name="exit">Выйти</string>
+    <string name="theme">Тема</string>
+    <string name="language">Язык</string>
+    <string name="edit_avatar">Изменить аватар профиля</string>
+    <string name="personal_data">Личные данные</string>
+    <string name="name">Имя</string>
+    <string name="pass">Пароль</string>
+    <string name="email">Почта</string>
+    <string name="phone">Телефон</string>
+    <string name="back">Назад</string>
+    <string name="service">Услуга:</string>
+    <string name="Master">Мастер:</string>
+    <string name="date">Дата:</string>
+    <string name="time">Время:</string>
+    <string name="example_works">Примеры наших работ:</string>
+    <string name="title_info">Тату салон\n\"Такой себе шутник\"</string>
+    <string name="our_masters">Наши мастера:</string>
+    <string name="about_us">О нас:</string>
+    <string name="about_us_text">Этот тату салон создан для людей и молодежи, которые давно хотели сделать красивую тату или украсить себя пирсингом. Теперь благодаря тату салона «Такой себе шутник» люди могут воплотить свою мечту в реальность. Салон предназначен для всех возрастов и слоев населения.</string>
+    <string name="Contact_details_text">Контактные данные:</string>
+    <string name="name_tg">fikus_rus</string>
+    <string name="num_phone">8 (917) 937–92–35</string>
+    <string name="where_are_we_located">Где мы находимся:</string>
+    <string name="user_sketch">Свой эскиз</string>
+    <string name="label_catalog">Каталог</string>
+    <string name="title_activity_info_tatu">InfoTatu</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="label_tatu">Тату</string>
+    <string name="sign_up_session">Записаться</string>
+    <string name="photo_gallery_tatu">Фотографии тату:</string>
+    <string name="recommended_places">Рекомендуемые места для битья тату:</string>
+    <string name="label_tatu_color">Варианты расцветок тату:</string>
+    <string name="label_meaning_tattoo">Значение тату:</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Главная</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="record_master">Запись к мастеру</string>
+    <string name="name_tattoo">Название:</string>
+    <string name="tattoo">Тату</string>
+    <string name="select_date">Выбрать дату</string>
+    <string name="record">Записаться</string>
+    <string name="label_your_sketch">Свой скетч</string>
+    <string name="image_tattoo">Изображение тату:</string>
+</resources>
