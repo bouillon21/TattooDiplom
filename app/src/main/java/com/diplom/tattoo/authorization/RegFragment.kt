@@ -92,7 +92,6 @@ class RegFragment : Fragment() {
     private fun initFB() {
         mDatabase = FirebaseDatabase.getInstance()
         mDatabaseReference = mDatabase!!.reference.child("users")
-        mAuth = FirebaseAuth.getInstance()
     }
 
     private fun btnListeners() {

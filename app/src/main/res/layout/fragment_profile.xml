@@ -22,7 +22,7 @@
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile"
-        android:text="Bulat" />
+        tools:text="@tools:sample/first_names" />
 
     <TextView
         android:id="@+id/email"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/name"
-        android:text="B.barzhanov@yandex.ru" />
+        tools:text="@string/email" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="72dp"
