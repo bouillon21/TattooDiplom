@@ -25,7 +25,9 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        if (mAuth.currentUser != null)
+        if (mAuth.currentUser != null
+//            && mAuth.currentUser!!.isEmailVerified
+        )
             updateUI()
         btnListeners()
         return binding.root
@@ -40,7 +42,9 @@ class LoginFragment : Fragment() {
         ) {
             mAuth.signInWithEmailAndPassword(login, pass)
                 .addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
+                    if (task.isSuccessful
+//                        && mAuth.currentUser!!.isEmailVerified
+                    ) {
                         updateUI()
                         Toast.makeText(context, "Authorization successful", Toast.LENGTH_SHORT)
                             .show()
@@ -50,6 +54,7 @@ class LoginFragment : Fragment() {
         } else
             Toast.makeText(context, "Enter all details", Toast.LENGTH_SHORT).show()
     }
+
 
     private fun updateUI() {
         val intent = Intent(requireActivity(), MainActivity::class.java)
