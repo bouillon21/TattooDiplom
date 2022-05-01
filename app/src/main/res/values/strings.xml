@@ -58,4 +58,9 @@
     <string name="record">Записаться</string>
     <string name="label_your_sketch">Свой скетч</string>
     <string name="image_tattoo">Изображение тату:</string>
+    <string name="Pass">Пароль</string>
+    <string name="last_name">Фамилия</string>
+    <string name="reg_text">Зарегистрироваться</string>
+    <string name="login">Логин</string>
+    <string name="auth_text">Авторизоваться</string>
 </resources>

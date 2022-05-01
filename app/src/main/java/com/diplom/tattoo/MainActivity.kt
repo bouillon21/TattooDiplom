@@ -21,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
+
+        val database = Firebase.database.reference
+        val user = User("Bulat", "88888888888888@")
+        database.child("123").setValue(user)
+
+
         MapKitFactory.setApiKey("40e9fe87-4964-4a34-805e-9bee95e8305c")
         MapKitFactory.initialize(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
