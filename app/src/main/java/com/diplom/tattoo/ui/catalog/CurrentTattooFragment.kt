@@ -21,16 +21,14 @@ class CurrentTattooFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-
+    ): View {
         _binding = FragmentCurrentTattooBinding.inflate(inflater, container, false)
 
         val tattoo = arguments?.getParcelable<Tatu>("current_tattoo")
 
         binding.labelTattoo.text = tattoo?.title
-
         val tatu = listOf<Tatu>(tattoo!!)
+
         val adapterTatu = TatuInfoAdapter(requireContext(), tatu)
         binding.listPhoto.adapter = adapterTatu
 
@@ -47,9 +45,5 @@ class CurrentTattooFragment : Fragment() {
         }
 
         return binding.root
-    }
-
-    companion object {
-
     }
 }

@@ -33,10 +33,7 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    private fun loginUser() {
-        val login = binding.loginEdit.text.toString()
-        val pass = binding.passEdit.text.toString()
-
+    private fun loginUser(login: String, pass: String) {
         if (!TextUtils.isEmpty(login) &&
             !TextUtils.isEmpty(pass)
         ) {
@@ -46,10 +43,13 @@ class LoginFragment : Fragment() {
 //                        && mAuth.currentUser!!.isEmailVerified
                     ) {
                         updateUI()
-                        Toast.makeText(context, "Authorization successful", Toast.LENGTH_SHORT)
+                        Toast
+                            .makeText(context, "Authorization successful", Toast.LENGTH_SHORT)
                             .show()
                     } else
-                        Toast.makeText(context, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                        Toast
+                            .makeText(context, "Authentication failed.", Toast.LENGTH_SHORT)
+                            .show()
                 }
         } else
             Toast.makeText(context, "Enter all details", Toast.LENGTH_SHORT).show()
@@ -63,9 +63,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun btnListeners() {
-
         binding.authBth.setOnClickListener {
-            loginUser()
+            loginUser(
+                binding.loginEdit.text.toString(),
+                binding.passEdit.text.toString()
+            )
         }
         binding.regBtn.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_regFragment)

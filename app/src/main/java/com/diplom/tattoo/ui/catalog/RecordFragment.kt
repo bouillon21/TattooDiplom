@@ -8,16 +8,15 @@ import androidx.fragment.app.Fragment
 import com.diplom.tattoo.data.Tatu
 import com.diplom.tattoo.databinding.FragmentRecordBinding
 
-private var _binding: FragmentRecordBinding? = null
-private val binding get() = _binding!!
-
 class RecordFragment : Fragment() {
+
+    private var _binding: FragmentRecordBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentRecordBinding.inflate(inflater, container, false)
 
         val tattoo = arguments?.getParcelable<Tatu>("current_tattoo")
@@ -25,6 +24,4 @@ class RecordFragment : Fragment() {
 
         return binding.root
     }
-
-    companion object
 }

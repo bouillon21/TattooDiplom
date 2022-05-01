@@ -15,9 +15,6 @@ import com.diplom.tattoo.databinding.FragmentCatalogBinding
 class CatalogFragment : Fragment() {
 
     private var _binding: FragmentCatalogBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,25 +23,29 @@ class CatalogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCatalogBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val bundle = Bundle()
+        initRV()
+        btnListeners()
+        return binding.root
+    }
 
-        val recyclerView = root.findViewById<RecyclerView>(R.id.rv_catalog);
+
+    private fun initRV(){
+        val recyclerView = binding.rvCatalog
         val tatu = TemporarilyDataStorage.getTatuList()
         val adapterTatu = TatuAdapter(requireContext(), tatu) { position ->
             val tattoo = tatu[position]
-
+            val bundle = Bundle()
             bundle.putParcelable("current_tattoo", tattoo)
             findNavController().navigate(R.id.action_nav_catalog_to_nav_current_tattoo, bundle)
         }
+        recyclerView.adapter = adapterTatu
+    }
 
+    private fun btnListeners() {
         binding.buttonEdit.setOnClickListener {
             findNavController().navigate(R.id.action_nav_catalog_to_nav_your_sketch)
         }
-        recyclerView.adapter = adapterTatu
-
-        return root
     }
 
     override fun onDestroyView() {

@@ -28,10 +28,10 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         initFB()
         btnListeners()
+
         return binding.root
     }
 
@@ -54,7 +54,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun btnListeners() {
-
         binding.buttonEdit.setOnClickListener {
             findNavController().navigate(R.id.action_nav_profile_to_nav_edit_profile)
         }
