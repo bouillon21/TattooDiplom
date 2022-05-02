@@ -6,13 +6,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.diplom.tattoo.data.DataUtil
-import com.diplom.tattoo.data.User
 import com.diplom.tattoo.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.yandex.mapkit.MapKitFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,18 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        initMap()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBottomBar()
     }
 
-    private fun initMap(){
-        MapKitFactory.setApiKey(DataUtil.YANDEX_MAP_API_KEY)
-        MapKitFactory.initialize(this)
-    }
-
-    private fun initBottomBar(){
+    private fun initBottomBar() {
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(

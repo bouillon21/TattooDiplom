@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.finishAfterTransition
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.diplom.tattoo.MainActivity
 import com.diplom.tattoo.R
 import com.diplom.tattoo.authorization.AuthorizationActivity
 import com.diplom.tattoo.databinding.FragmentProfileBinding
@@ -39,11 +40,12 @@ class ProfileFragment : Fragment() {
         super.onStart()
 
         val cUserDB = mDatabaseReference!!.child(mAuth.currentUser!!.uid)
-        cUserDB.addValueEventListener(object : ValueEventListener  {
-            override fun onDataChange (snapshot: DataSnapshot) {
+        cUserDB.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
                 binding.name.text = snapshot.child("firstName").value as String
                 binding.email.text = mAuth.currentUser!!.email
             }
+
             override fun onCancelled(databaseError: DatabaseError) {}
         })
     }
@@ -65,8 +67,10 @@ class ProfileFragment : Fragment() {
             val intent = Intent(requireActivity(), AuthorizationActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
+            finishAfterTransition(requireActivity())
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

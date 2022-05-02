@@ -1,29 +1,21 @@
 package com.diplom.tattoo.ui.home
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
-import com.diplom.tattoo.R
 import com.diplom.tattoo.adapter.MasterAdapter
 import com.diplom.tattoo.data.TemporarilyDataStorage
 import com.diplom.tattoo.databinding.FragmentHomeBinding
-import com.yandex.mapkit.Animation
-import com.yandex.mapkit.MapKitFactory
-import com.yandex.mapkit.geometry.Point
-import com.yandex.mapkit.map.CameraPosition
-import com.yandex.mapkit.mapview.MapView
-import com.yandex.runtime.ui_view.ViewProvider
+import java.util.*
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    private lateinit var mapview: MapView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,7 +23,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
+        btnListeners()
 //        val tatu = TemporarilyDataStorage.getTatuList()
 //        val adapterTatu = TatuAdapter(requireContext(), tatu)
 //
@@ -42,40 +34,27 @@ class HomeFragment : Fragment() {
         val RVMaster = binding.listMaster
         RVMaster.adapter = adapterMaster
 
-        initMap()
+
 
         return binding.root
     }
 
-    private fun initMap(){
-        val locate = Point(55.749138, 49.257200)
-
-        mapview = binding.mapview
-        mapview.setNoninteractive(true)
-        mapview.map.move(
-            CameraPosition(locate, 17.0f, 0.0f, 0.0f),
-            Animation(Animation.Type.LINEAR, 0.0f), null,
-        )
-        val viewPointMap = View(requireContext()).apply {
-            background = AppCompatResources.getDrawable(requireContext(), R.drawable.where)
+    private fun btnListeners() {
+        binding.locate.setOnClickListener {
+            val uri: String = java.lang.String.format(Locale.ENGLISH, "geo:%f,%f", 55.749138, 49.257200)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            context?.startActivity(intent)
         }
-        mapview.map.mapObjects.addPlacemark(
-            locate, ViewProvider(viewPointMap)
-        )
-    }
-
-    override fun onStop() {
-        // Вызов onStop нужно передавать инстансам MapView и MapKit.
-        mapview.onStop()
-        MapKitFactory.getInstance().onStop()
-        super.onStop()
-    }
-
-    override fun onStart() {
-        // Вызов onStart нужно передавать инстансам MapView и MapKit.
-        super.onStart()
-        MapKitFactory.getInstance().onStart()
-        mapview.onStart()
+        binding.phone.setOnClickListener {
+            val phone = "+79179379235"
+            val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null))
+            startActivity(intent)
+        }
+        binding.tg.setOnClickListener {
+            val Telegram = Intent(Intent.ACTION_VIEW)
+            Telegram.data = Uri.parse("https://t.me/fikus_rus")
+            startActivity(Telegram)
+        }
     }
 
     override fun onDestroyView() {
