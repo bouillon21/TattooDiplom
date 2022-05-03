@@ -5,23 +5,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityCompat.finishAfterTransition
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.diplom.tattoo.R
+import com.diplom.tattoo.model.SharedDatabaseViewModel
 import com.diplom.tattoo.authorization.AuthorizationActivity
 import com.diplom.tattoo.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    private var mDatabaseReference: DatabaseReference? = null
-    private var mDatabase: FirebaseDatabase? = null
+    private lateinit var model: SharedDatabaseViewModel
+
     private var mAuth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
@@ -30,29 +30,18 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        initFB()
+        model = ViewModelProvider(requireActivity())[SharedDatabaseViewModel::class.java]
         btnListeners()
 
         return binding.root
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        val cUserDB = mDatabaseReference!!.child(mAuth.currentUser!!.uid)
-        cUserDB.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                binding.name.text = snapshot.child("firstName").value as String
-                binding.email.text = mAuth.currentUser!!.email
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {}
-        })
-    }
-
-    private fun initFB() {
-        mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference.child("users")
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        model.user.observe(viewLifecycleOwner){
+            binding.name.text = it.firstName
+            binding.email.text = it.email
+        }
     }
 
     private fun btnListeners() {

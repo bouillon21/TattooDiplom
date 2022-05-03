@@ -2,23 +2,29 @@ package com.diplom.tattoo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.diplom.tattoo.databinding.ActivityMainBinding
+import com.diplom.tattoo.model.SharedDatabaseViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var model: SharedDatabaseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         binding = ActivityMainBinding.inflate(layoutInflater)
+        model = ViewModelProvider(this)[SharedDatabaseViewModel::class.java]
+
         setContentView(binding.root)
         initBottomBar()
+
     }
 
     private fun initBottomBar() {
