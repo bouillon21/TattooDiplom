@@ -2,7 +2,6 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/BasePadding">
@@ -21,22 +20,22 @@
         android:layout_height="72dp"
         android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@id/buttonEdit"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/master"
+        app:layout_constraintBottom_toTopOf="@id/changePhoto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile"
-        app:shapeAppearanceOverlay="@style/ImageAvatar"
-        android:src="@drawable/master" />
+        app:shapeAppearanceOverlay="@style/ImageAvatar" />
 
     <Button
-        android:id="@+id/buttonEdit"
-        android:layout_width ="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/changePhoto"
         style="@style/DefaultButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="@string/edit_avatar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatar"/>
+        app:layout_constraintTop_toBottomOf="@id/avatar" />
 
     <LinearLayout
         android:id="@+id/menuLinear"
@@ -45,12 +44,12 @@
         android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonEdit">
+        app:layout_constraintTop_toBottomOf="@id/changePhoto">
 
         <TextView
             android:id="@+id/personal_data"
             style="@style/DefaultHeaderStyle"
-            android:text="@string/personal_data"/>
+            android:text="@string/personal_data" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -62,37 +61,42 @@
                 android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
                 android:hint="@string/name"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/editPass"
+                android:id="@+id/editLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:hint="@string/pass"
-                app:layout_constraintTop_toBottomOf="@+id/editName"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:hint="@string/last_name"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editName" />
+
 
             <EditText
                 android:id="@+id/editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:hint="@string/email"
-                app:layout_constraintTop_toBottomOf="@+id/editPass"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:focusable="false"
+                android:longClickable="false"
+                android:inputType="textEmailAddress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editLastName" />
 
             <EditText
-                android:id="@+id/editPhone"
+                android:id="@+id/editPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:hint="@string/phone"
-                app:layout_constraintTop_toBottomOf="@+id/editEmail"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:hint="@string/pass"
+                android:focusable="false"
+                android:longClickable="false"
+                android:inputType="textPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editEmail" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -100,11 +104,21 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/backButton"
+        android:id="@+id/saveButton"
         style="@style/DefaultButtonStyle"
-        android:layout_width ="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/back"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!--    <Button-->
+    <!--        android:id="@+id/backButton"-->
+    <!--        style="@style/DefaultButtonStyle"-->
+    <!--        android:layout_width ="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/back"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

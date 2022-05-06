@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.finishAfterTransition
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.diplom.tattoo.MainActivity
@@ -25,40 +26,50 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        if (mAuth.currentUser != null
+//            && mAuth.currentUser!!.isEmailVerified
+        )
+            updateUI()
         btnListeners()
         return binding.root
     }
 
-    private fun loginUser() {
-        val login = binding.loginEdit.text.toString()
-        val pass = binding.passEdit.text.toString()
-
+    private fun loginUser(login: String, pass: String) {
         if (!TextUtils.isEmpty(login) &&
             !TextUtils.isEmpty(pass)
         ) {
             mAuth.signInWithEmailAndPassword(login, pass)
                 .addOnCompleteListener(requireActivity()) { task ->
-                    if (task.isSuccessful) {
+                    if (task.isSuccessful
+//                        && mAuth.currentUser!!.isEmailVerified
+                    ) {
                         updateUI()
-                        Toast.makeText(context, "Authorization successful", Toast.LENGTH_SHORT)
+                        Toast
+                            .makeText(context, "Authorization successful", Toast.LENGTH_SHORT)
                             .show()
                     } else
-                        Toast.makeText(context, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                        Toast
+                            .makeText(context, "Authentication failed.", Toast.LENGTH_SHORT)
+                            .show()
                 }
         } else
             Toast.makeText(context, "Enter all details", Toast.LENGTH_SHORT).show()
     }
 
+
     private fun updateUI() {
         val intent = Intent(requireActivity(), MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
+        finishAfterTransition(requireActivity())
     }
 
     private fun btnListeners() {
-
         binding.authBth.setOnClickListener {
-            loginUser()
+            loginUser(
+                binding.loginEdit.text.toString(),
+                binding.passEdit.text.toString()
+            )
         }
         binding.regBtn.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_regFragment)

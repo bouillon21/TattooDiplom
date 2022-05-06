@@ -12,10 +12,12 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_nav_profile_to_nav_edit_profile"
-            app:destination="@id/nav_edit_profile" />
+            app:destination="@id/nav_edit_profile"
+            app:popUpTo="@id/nav_profile" />
         <action
             android:id="@+id/action_nav_profile_to_nav_my_notes"
-            app:destination="@id/nav_my_notes" />
+            app:destination="@id/nav_my_notes"
+            app:popUpTo="@id/nav_profile" />
     </fragment>
 
     <fragment

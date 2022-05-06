@@ -63,4 +63,6 @@
     <string name="reg_text">Зарегистрироваться</string>
     <string name="login">Логин</string>
     <string name="auth_text">Авторизоваться</string>
+    <string name="office_address">Сабит, 19Ак1</string>
+    <string name="save">Сохранить</string>
 </resources>
