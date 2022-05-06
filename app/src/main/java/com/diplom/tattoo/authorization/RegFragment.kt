@@ -48,7 +48,6 @@ class RegFragment : Fragment() {
                         val cUserDB = mDatabaseReference!!.child(mAuth.currentUser!!.uid)
                         cUserDB.child("firstName").setValue(name)
                         cUserDB.child("lastName").setValue(lastName)
-
                         Toast
                             .makeText(context, "Successful registration", Toast.LENGTH_SHORT)
                             .show()

@@ -14,6 +14,7 @@ import com.diplom.tattoo.model.SharedDatabaseViewModel
 import com.diplom.tattoo.authorization.AuthorizationActivity
 import com.diplom.tattoo.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.squareup.picasso.Picasso
 
 class ProfileFragment : Fragment() {
 
@@ -41,6 +42,7 @@ class ProfileFragment : Fragment() {
         model.user.observe(viewLifecycleOwner){
             binding.name.text = it.firstName
             binding.email.text = it.email
+            Picasso.get().load(it.photoUrl).placeholder(R.drawable.default_avatar).into(binding.avatar)
         }
     }
 

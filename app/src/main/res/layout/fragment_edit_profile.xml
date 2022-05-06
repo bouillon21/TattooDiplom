@@ -21,7 +21,7 @@
         android:layout_marginTop="30dp"
         android:scaleType="centerCrop"
         android:src="@drawable/master"
-        app:layout_constraintBottom_toTopOf="@id/buttonEdit"
+        app:layout_constraintBottom_toTopOf="@id/changePhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profile"
@@ -82,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
                 android:focusable="false"
+                android:longClickable="false"
                 android:inputType="textEmailAddress"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editLastName" />
@@ -92,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/pass"
                 android:focusable="false"
+                android:longClickable="false"
                 android:inputType="textPassword"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editEmail" />
