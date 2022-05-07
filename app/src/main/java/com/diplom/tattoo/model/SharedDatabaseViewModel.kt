@@ -87,13 +87,12 @@ class SharedDatabaseViewModel : ViewModel() {
                             cUserDB.updateChildren(
                                 mapOf("photoUrl" to it.result.toString())
                             )
-                            cUserDB.updateChildren(mapOf("firstName" to data.firstName))
-                            cUserDB.updateChildren(mapOf("lastName" to data.lastName))
-                            updateProfileUi()
                         }
                     }
                 }
             }
         }
+        cUserDB.updateChildren(mapOf("firstName" to data.firstName))
+        cUserDB.updateChildren(mapOf("lastName" to data.lastName))
     }
 }
