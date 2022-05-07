@@ -6,14 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.diplom.tattoo.R
 import com.diplom.tattoo.data.Master
+import com.diplom.tattoo.model.SharedDatabaseViewModel
+import com.squareup.picasso.Picasso
 
-class MasterAdapter(Context: Context, private val master: List<Master>) :
+class MasterAdapter(Context: Context, private val master: ArrayList<Master>) :
     RecyclerView.Adapter<MasterAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(Context)
+
 
     override fun getItemCount(): Int = master.size
 
@@ -25,16 +29,16 @@ class MasterAdapter(Context: Context, private val master: List<Master>) :
         holder.bind(getItem(position))
     }
 
-    private fun getItem(position: Int) : Master = master[position]
+    private fun getItem(position: Int): Master = master[position]
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val image: ImageView = itemView.findViewById(R.id.photo_gallery_avatar)
         private val title: TextView = itemView.findViewById(R.id.photo_gallery_name)
 
-        fun bind(version: Master) {
-            image.setImageResource(version.imageAndroid)
-            title.text = version.title
+        fun bind(data: Master) {
+            Picasso.get().load(data.photoUrl).placeholder(R.drawable.master).into(image)
+            title.text = data.firstName
         }
 
     }

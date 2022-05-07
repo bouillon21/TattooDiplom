@@ -44,22 +44,22 @@ object TemporarilyDataStorage {
         )
     }
 
-    fun getMasterList(): List<Master>{
-        return listOf(
-            Master(
-                title = "Булат",
-                R.drawable.master
-            ),
-            Master(
-                title = "Расим",
-                R.drawable.master
-            ),
-            Master(
-                title = "Рамиль",
-                R.drawable.master
-            )
-        )
-    }
+//    fun getMasterList(): List<Master>{
+//        return listOf(
+//            Master(
+//                title = "Булат",
+//                R.drawable.master
+//            ),
+//            Master(
+//                title = "Расим",
+//                R.drawable.master
+//            ),
+//            Master(
+//                title = "Рамиль",
+//                R.drawable.master
+//            )
+//        )
+//    }
 
     fun getDescriptionList(): List<DescriptionTatuInfo>{
         return listOf(

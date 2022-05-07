@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.diplom.tattoo.data.Master
 import com.diplom.tattoo.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -19,9 +20,9 @@ import java.util.concurrent.locks.ReentrantLock
 class SharedDatabaseViewModel : ViewModel() {
 
     private var mDatabase = FirebaseDatabase.getInstance()
-    private var mDatabaseReference = mDatabase.reference.child("users")
+    private var mDatabaseReference = mDatabase.reference
     private var mAuth = FirebaseAuth.getInstance()
-    private val cUserDB = mDatabaseReference.child(mAuth.currentUser!!.uid)
+    private val cUserDB = mDatabaseReference.child("users").child(mAuth.currentUser!!.uid)
     private var storage: FirebaseStorage = FirebaseStorage.getInstance()
     private var storageRef: StorageReference = storage.reference
 
@@ -30,12 +31,15 @@ class SharedDatabaseViewModel : ViewModel() {
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
 
+    private val _master = MutableLiveData<ArrayList<Master>>()
+    val master: LiveData<ArrayList<Master>> = _master
+
     init {
         updateProfileUi()
+        updateMasters()
     }
 
     private fun updateProfileUi() {
-        val cUserDB = mDatabaseReference.child(mAuth.currentUser!!.uid)
         cUserDB.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 _user.apply {
@@ -48,6 +52,23 @@ class SharedDatabaseViewModel : ViewModel() {
                         )
                     )
                 }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
+    }
+
+    private fun updateMasters(){
+        val masterDB = arrayListOf<Master>()
+        val ref = mDatabaseReference.child("masters")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                masterDB.clear()
+                for (snapshot in dataSnapshot.children) {
+                    val master = snapshot.getValue(Master::class.java)
+                    masterDB.add(master!!)
+                }
+                _master.value = masterDB
             }
 
             override fun onCancelled(databaseError: DatabaseError) {}

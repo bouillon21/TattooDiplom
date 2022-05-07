@@ -1,12 +1,9 @@
 package com.diplom.tattoo.data
 
-import android.os.Parcelable
-import androidx.annotation.DrawableRes
-import kotlinx.android.parcel.Parcelize
 
-
-@Parcelize
 data class Master(
-    val title: String,
-    @DrawableRes val imageAndroid: Int
-) : Parcelable
+    val firstName: String = "",
+    val lastName: String = "",
+    val photoUrl: String = "null"
+
+)
