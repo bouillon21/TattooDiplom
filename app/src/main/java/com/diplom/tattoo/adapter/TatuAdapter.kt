@@ -12,7 +12,8 @@ import com.diplom.tattoo.data.Tatu
 
 class TatuAdapter(
     Context: Context,
-    private val tatu: List<Tatu>, private val clickListener: (position: Int) -> Unit
+    private val tatu: List<Tatu>,
+    private val clickListener: (position: Int) -> Unit
 ) :
     RecyclerView.Adapter<TatuAdapter.ViewHolder>() {
 
@@ -21,7 +22,6 @@ class TatuAdapter(
     override fun getItemCount(): Int = tatu.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ViewHolder(
             inflater.inflate(
                 R.layout.photo_gallery_item,

@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.diplom.tattoo.R
 import com.diplom.tattoo.adapter.MasterAdapter
+import com.diplom.tattoo.data.Master
 import com.diplom.tattoo.data.TemporarilyDataStorage
 import com.diplom.tattoo.databinding.FragmentHomeBinding
 import com.diplom.tattoo.model.SharedDatabaseViewModel
@@ -44,7 +46,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         model.master.observe(viewLifecycleOwner){
-            adapterMaster = MasterAdapter(requireContext(), it!!)
+            adapterMaster = MasterAdapter(requireContext(), it!!){ position ->
+                val cMaster = it[position]
+                val bundle = Bundle()
+                bundle.putParcelable("current_master", cMaster)
+                findNavController().navigate(R.id.action_nav_home_to_masterFragment, bundle)
+            }
             val RVMaster = binding.listMaster
             RVMaster.adapter = adapterMaster
         }

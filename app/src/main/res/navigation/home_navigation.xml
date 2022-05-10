@@ -9,5 +9,19 @@
         android:id="@+id/nav_home"
         android:name="com.diplom.tattoo.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_masterFragment"
+            app:destination="@id/masterFragment"
+            app:popUpTo="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/masterFragment"
+        android:name="com.diplom.tattoo.ui.home.MasterFragment"
+        android:label="fragment_master"
+        tools:layout="@layout/fragment_master" >
+        <argument
+            android:name="current_master"
+            app:argType="com.diplom.tattoo.data.Master" />
+    </fragment>
 </navigation>

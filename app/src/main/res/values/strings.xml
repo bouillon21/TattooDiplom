@@ -65,4 +65,8 @@
     <string name="auth_text">Авторизоваться</string>
     <string name="office_address">Сабит, 19Ак1</string>
     <string name="save">Сохранить</string>
+    <string name="current_master">Мастер</string>
+    <string name="photo_gallery_master">Фотографии мастера:</string>
+    <string name="label_meaning_master">О мастере:</string>
+    <string name="photo_gallery_example_tatu">Примеры работ:</string>
 </resources>
