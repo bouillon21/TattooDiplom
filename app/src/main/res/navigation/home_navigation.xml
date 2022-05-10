@@ -14,6 +14,9 @@
             android:id="@+id/action_nav_home_to_masterFragment"
             app:destination="@id/masterFragment"
             app:popUpTo="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_home_to_tattooFragment"
+            app:destination="@id/tattooFragment" />
     </fragment>
     <fragment
         android:id="@+id/masterFragment"
@@ -23,5 +26,29 @@
         <argument
             android:name="current_master"
             app:argType="com.diplom.tattoo.data.Master" />
+        <argument
+            android:name="current_tattoo"
+            app:argType="com.diplom.tattoo.data.Tattoo" />
+    </fragment>
+    <fragment
+        android:id="@+id/tattooFragment"
+        android:name="com.diplom.tattoo.ui.catalog.CurrentTattooFragment"
+        android:label="fragment_tattoo"
+        tools:layout="@layout/fragment_current_tattoo" >
+        <argument
+            android:name="current_tattoo"
+            app:argType="com.diplom.tattoo.data.Tattoo" />
+        <action
+            android:id="@+id/action_nav_current_tattoo_to_nav_record"
+            app:destination="@id/recordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recordFragment"
+        android:name="com.diplom.tattoo.ui.catalog.RecordFragment"
+        android:label="record_tattoo"
+        tools:layout="@layout/fragment_record" >
+        <argument
+            android:name="current_tattoo"
+            app:argType="com.diplom.tattoo.data.Tattoo" />
     </fragment>
 </navigation>

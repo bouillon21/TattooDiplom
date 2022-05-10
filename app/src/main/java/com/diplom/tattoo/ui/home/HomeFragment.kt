@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.diplom.tattoo.R
 import com.diplom.tattoo.adapter.MasterAdapter
+import com.diplom.tattoo.adapter.TatuAdapter
 import com.diplom.tattoo.data.Master
 import com.diplom.tattoo.data.TemporarilyDataStorage
 import com.diplom.tattoo.databinding.FragmentHomeBinding
@@ -35,11 +36,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         model = ViewModelProvider(requireActivity())[SharedDatabaseViewModel::class.java]
         btnListeners()
-//        val tatu = TemporarilyDataStorage.getTatuList()
-//        val adapterTatu = TatuAdapter(requireContext(), tatu)
-//
-//        val RVTatu = root.findViewById<RecyclerView>(R.id.list_works)
-//        RVTatu.adapter = adapterTatu
+
         return binding.root
     }
 
@@ -53,6 +50,16 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(R.id.action_nav_home_to_masterFragment, bundle)
             }
             val RVMaster = binding.listMaster
+            RVMaster.adapter = adapterMaster
+        }
+        model.tattoo.observe(viewLifecycleOwner) {
+            val adapterMaster = TatuAdapter(requireContext(), it!!) { position ->
+                val cTattoo = it[position]
+                val bundle = Bundle()
+                bundle.putParcelable("current_tattoo", cTattoo)
+                findNavController().navigate(R.id.action_nav_home_to_tattooFragment, bundle)
+            }
+            val RVMaster = binding.listWorks
             RVMaster.adapter = adapterMaster
         }
     }

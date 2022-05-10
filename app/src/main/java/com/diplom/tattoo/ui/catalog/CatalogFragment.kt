@@ -5,17 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
 import com.diplom.tattoo.R
 import com.diplom.tattoo.adapter.TatuAdapter
-import com.diplom.tattoo.data.TemporarilyDataStorage
 import com.diplom.tattoo.databinding.FragmentCatalogBinding
+import com.diplom.tattoo.model.SharedDatabaseViewModel
 
 class CatalogFragment : Fragment() {
 
     private var _binding: FragmentCatalogBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var model: SharedDatabaseViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,23 +25,24 @@ class CatalogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCatalogBinding.inflate(inflater, container, false)
+        model = ViewModelProvider(requireActivity())[SharedDatabaseViewModel::class.java]
 
-        initRV()
         btnListeners()
         return binding.root
     }
 
-
-    private fun initRV(){
-        val recyclerView = binding.rvCatalog
-        val tatu = TemporarilyDataStorage.getTatuList()
-        val adapterTatu = TatuAdapter(requireContext(), tatu) { position ->
-            val tattoo = tatu[position]
-            val bundle = Bundle()
-            bundle.putParcelable("current_tattoo", tattoo)
-            findNavController().navigate(R.id.action_nav_catalog_to_nav_current_tattoo, bundle)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        model.tattoo.observe(viewLifecycleOwner) {
+            val adapterMaster = TatuAdapter(requireContext(), it!!) { position ->
+                val cTattoo = it[position]
+                val bundle = Bundle()
+                bundle.putParcelable("current_tattoo", cTattoo)
+                findNavController().navigate(R.id.action_nav_catalog_to_nav_current_tattoo, bundle)
+            }
+            val RVMaster = binding.rvCatalog
+            RVMaster.adapter = adapterMaster
         }
-        recyclerView.adapter = adapterTatu
     }
 
     private fun btnListeners() {

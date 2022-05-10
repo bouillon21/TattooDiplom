@@ -8,7 +8,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.diplom.tattoo.R
 import com.diplom.tattoo.data.Master
-import com.diplom.tattoo.data.Tatu
 import com.squareup.picasso.Picasso
 
 class MasterInfoAdapter(Context: Context, private val master: List<Master>) :

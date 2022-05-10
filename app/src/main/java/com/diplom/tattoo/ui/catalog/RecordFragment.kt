@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.diplom.tattoo.data.Tatu
+import com.diplom.tattoo.data.Tattoo
 import com.diplom.tattoo.databinding.FragmentRecordBinding
 
 class RecordFragment : Fragment() {
@@ -19,7 +19,7 @@ class RecordFragment : Fragment() {
     ): View? {
         _binding = FragmentRecordBinding.inflate(inflater, container, false)
 
-        val tattoo = arguments?.getParcelable<Tatu>("current_tattoo")
+        val tattoo = arguments?.getParcelable<Tattoo>("current_tattoo")
         binding.nameTattoo.text = tattoo?.title
 
         return binding.root

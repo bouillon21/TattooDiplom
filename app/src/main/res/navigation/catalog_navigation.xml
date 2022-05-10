@@ -23,12 +23,12 @@
         android:name="com.diplom.tattoo.ui.catalog.CurrentTattooFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_current_tattoo" >
-        <argument
-            android:name="current_tattoo"
-            app:argType="com.diplom.tattoo.data.Tatu" />
         <action
             android:id="@+id/action_nav_current_tattoo_to_nav_record"
             app:destination="@id/nav_record" />
+        <argument
+            android:name="current_tattoo"
+            app:argType="com.diplom.tattoo.data.Tattoo" />
     </fragment>
 
     <fragment
@@ -38,7 +38,7 @@
         tools:layout="@layout/fragment_record">
         <argument
             android:name="current_tattoo"
-            app:argType="com.diplom.tattoo.data.Tatu" />
+            app:argType="com.diplom.tattoo.data.Tattoo" />
     </fragment>
 
     <fragment
@@ -46,9 +46,6 @@
         android:name="com.diplom.tattoo.ui.catalog.YourSketchFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_your_sketch">
-        <argument
-            android:name="current_tattoo"
-            app:argType="com.diplom.tattoo.data.Tatu" />
         <action
             android:id="@+id/action_nav_your_sketch_to_nav_record"
             app:destination="@id/nav_record" />

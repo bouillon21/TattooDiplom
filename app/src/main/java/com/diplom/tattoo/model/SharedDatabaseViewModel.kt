@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.diplom.tattoo.data.Master
+import com.diplom.tattoo.data.Tattoo
 import com.diplom.tattoo.data.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -34,9 +35,13 @@ class SharedDatabaseViewModel : ViewModel() {
     private val _master = MutableLiveData<ArrayList<Master>>()
     val master: LiveData<ArrayList<Master>> = _master
 
+    private val _tattoo = MutableLiveData<ArrayList<Tattoo>>()
+    val tattoo: LiveData<ArrayList<Tattoo>> = _tattoo
+
     init {
         updateProfileUi()
         updateMasters()
+        updateTattoo()
     }
 
     private fun updateProfileUi() {
@@ -73,6 +78,37 @@ class SharedDatabaseViewModel : ViewModel() {
 
             override fun onCancelled(databaseError: DatabaseError) {}
         })
+    }
+
+    private fun updateTattoo(){
+        val tattooDB = arrayListOf<Tattoo>()
+        val ref = mDatabaseReference.child("tattoo")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                tattooDB.clear()
+                for (snapshot in dataSnapshot.children) {
+                    val tattoo = snapshot.getValue(Tattoo::class.java)
+                    tattooDB.add(tattoo!!)
+                }
+                _tattoo.value = tattooDB
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
+    }
+
+    fun uploadTattoo(data: Tattoo){
+        val keyTattoo = mDatabaseReference.child("tattoo").push().key
+
+        val cUserDB = mDatabaseReference.child("tattoo").child(keyTattoo!!)
+        cUserDB.child("title").setValue(data.title)
+        cUserDB.child("des").setValue(data.des)
+        for(i in 0 until data.photoUrl.size)
+            cUserDB.child("photoUrl").child(i.toString()).setValue("null")
+        for(i in 0 until data.color.size)
+            cUserDB.child("color").child(i.toString()).setValue(data.color[i])
+        for(i in 0 until data.recommended.size)
+            cUserDB.child("recommended").child(i.toString()).setValue(data.recommended[i])
     }
 
 //    private fun uploadImageDB(uri: Uri?) {
