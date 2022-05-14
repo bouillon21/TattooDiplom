@@ -19,6 +19,9 @@ class CatalogFragment : Fragment() {
 
     private lateinit var model: SharedDatabaseViewModel
 
+    // TODO: item налезают друг на друга
+    // TODO: добавить свой эскиз
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

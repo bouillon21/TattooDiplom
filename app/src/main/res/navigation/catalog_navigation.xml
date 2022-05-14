@@ -25,7 +25,8 @@
         tools:layout="@layout/fragment_current_tattoo" >
         <action
             android:id="@+id/action_nav_current_tattoo_to_nav_record"
-            app:destination="@id/nav_record" />
+            app:destination="@id/nav_record"
+            app:popUpTo="@id/nav_current_tattoo" />
         <argument
             android:name="current_tattoo"
             app:argType="com.diplom.tattoo.data.Tattoo" />
@@ -48,6 +49,7 @@
         tools:layout="@layout/fragment_your_sketch">
         <action
             android:id="@+id/action_nav_your_sketch_to_nav_record"
-            app:destination="@id/nav_record" />
+            app:destination="@id/nav_record"
+            app:popUpTo="@id/nav_your_sketch" />
     </fragment>
 </navigation>

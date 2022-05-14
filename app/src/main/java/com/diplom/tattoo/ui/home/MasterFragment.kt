@@ -16,6 +16,7 @@ class MasterFragment : Fragment() {
     private var _binding: FragmentMasterBinding? = null
     private val binding get() = _binding!!
 
+    // TODO: примеры работ мастера
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

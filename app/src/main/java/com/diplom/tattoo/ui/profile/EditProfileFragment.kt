@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.diplom.tattoo.R
 import com.diplom.tattoo.data.User
 import com.diplom.tattoo.databinding.FragmentEditProfileBinding
@@ -83,7 +84,7 @@ class EditProfileFragment : Fragment() {
     }
 
     private fun btnListeners() {
-        binding.saveButton.setOnClickListener { saveData() }
+        binding.saveButton.setOnClickListener { saveData(); findNavController().popBackStack() }
         binding.changePhoto.setOnClickListener { changePhotoUser() }
     }
 }
