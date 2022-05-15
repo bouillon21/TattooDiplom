@@ -27,6 +27,8 @@ class SharedDatabaseViewModel : ViewModel() {
     private var storageRef: StorageReference = storage.reference
 
     private val PATH_USER_AVATAR = storageRef.child("avatars").child(mAuth.currentUser!!.uid)
+    private val PATH_TATTOO_IMAGE =
+        storageRef.child("tattoo").child("sketch").child(mAuth.currentUser!!.uid)
 
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> = _user
@@ -117,7 +119,7 @@ class SharedDatabaseViewModel : ViewModel() {
         })
     }
 
-    fun addRecordDB(rec: Record){
+    fun addRecordDB(rec: Record, uri: Uri? = null) {
         val keyRecord = mDatabaseReference.child("records").push().key
         val cRecordDB = mDatabaseReference.child("records").child(keyRecord!!)
 
@@ -126,6 +128,18 @@ class SharedDatabaseViewModel : ViewModel() {
         cRecordDB.child("master").setValue(rec.master)
         cRecordDB.child("tattoo").setValue(rec.tattoo)
         cRecordDB.child("time").setValue(rec.time)
+        if (rec.photoUrl != "")
+            cRecordDB.child("photoUrl").setValue(rec.photoUrl)
+        else if (uri != null) {
+            PATH_TATTOO_IMAGE.putFile(uri).addOnCompleteListener { it ->
+                if (it.isSuccessful) {
+                    PATH_TATTOO_IMAGE.downloadUrl.addOnCompleteListener {
+                        if (it.isSuccessful)
+                            cRecordDB.child("photoUrl").setValue(it.result.toString())
+                    }
+                }
+            }
+        }
     }
 
     fun uploadTattoo(data: Tattoo) {

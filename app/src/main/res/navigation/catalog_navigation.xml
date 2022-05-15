@@ -15,7 +15,8 @@
             app:destination="@id/nav_current_tattoo" />
         <action
             android:id="@+id/action_nav_catalog_to_nav_your_sketch"
-            app:destination="@id/nav_your_sketch" />
+            app:destination="@id/nav_your_sketch"
+            app:popUpTo="@id/nav_catalog" />
     </fragment>
 
     <fragment
@@ -40,6 +41,9 @@
         <argument
             android:name="current_tattoo"
             app:argType="com.diplom.tattoo.data.Tattoo" />
+        <argument
+            android:name="image_sketch"
+            app:argType="android.net.Uri" />
     </fragment>
 
     <fragment

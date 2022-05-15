@@ -1,5 +1,6 @@
 package com.diplom.tattoo.ui.catalog
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -39,6 +40,9 @@ class RecordFragment : Fragment() {
     private var cMaster: String? = null
     private var cTime: String? = null
     private var unavailableData: ArrayList<String> = arrayListOf<String>()
+    private var imageTattooUrl: String = ""
+    private var nameTattoo:String = "Свой скетч"
+    private var imageTattoo: Uri? = null
 
     private val sdf = SimpleDateFormat("dd.MM.yyyy", Locale.US)
 
@@ -65,7 +69,13 @@ class RecordFragment : Fragment() {
 
     private fun initInfo() {
         val tattoo = arguments?.getParcelable<Tattoo>("current_tattoo")
-        binding.nameTattoo.text = tattoo?.title
+        if (tattoo != null){
+            imageTattooUrl = tattoo.photoUrl[0]
+            nameTattoo = tattoo.title
+        }
+        else
+            imageTattoo = arguments?.getParcelable<Uri>("image_sketch")
+        binding.nameTattoo.text = nameTattoo
         changeMaster(listOf())
     }
 
@@ -188,10 +198,12 @@ class RecordFragment : Fragment() {
                     Record(
                         "",
                         cMaster!!,
-                        binding.nameTattoo.text.toString(),
+                        nameTattoo,
                         binding.data.text.toString(),
-                        cTime!!
-                    )
+                        cTime!!,
+                        imageTattooUrl,
+                    ),
+                    imageTattoo
                 )
             findNavController().popBackStack()
         }

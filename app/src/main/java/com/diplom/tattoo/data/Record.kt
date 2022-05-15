@@ -9,5 +9,6 @@ data class Record(
     val master: String = "",
     val tattoo: String = "",
     val data: String = "",
-    val time: String = ""
+    val time: String = "",
+    val photoUrl: String = ""
 ) : Parcelable

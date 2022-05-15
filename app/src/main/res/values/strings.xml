@@ -69,4 +69,5 @@
     <string name="photo_gallery_master">Фотографии мастера:</string>
     <string name="label_meaning_master">О мастере:</string>
     <string name="photo_gallery_example_tatu">Примеры работ:</string>
+    <string name="add_image">Добавить изображение</string>
 </resources>
