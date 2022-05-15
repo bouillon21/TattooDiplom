@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/profile"
         app:layout_constraintTop_toTopOf="@id/name"
         app:shapeAppearanceOverlay="@style/ImageAvatar"
-        android:src="@drawable/master" />
+        android:src="@drawable/default_avatar" />
 
     <Button
         android:id="@+id/buttonEdit"
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/MyRecordings"
-                android:textColor="#83000000"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -113,7 +113,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/theme"
-                android:textColor="#83000000"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -139,7 +138,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/language"
-                android:textColor="#83000000"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

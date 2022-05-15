@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var model: SharedDatabaseViewModel
 
     // TODO: отключить темную тему
-    // TODO: отключить горизнтальный режим
     // TODO: добавить админ панель
     
     override fun onCreate(savedInstanceState: Bundle?) {
