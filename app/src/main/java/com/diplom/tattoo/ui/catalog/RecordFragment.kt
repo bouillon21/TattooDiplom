@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,7 @@ import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class RecordFragment : Fragment() {
@@ -29,12 +31,7 @@ class RecordFragment : Fragment() {
     private lateinit var model: SharedDatabaseViewModel
 
     private val masters = arrayListOf<String>()
-    private val defaultTime = arrayListOf<String>(
-        "12:00",
-        "13:00",
-        "14:00",
-        "15:00"
-    )
+    private var unavailableTime: ArrayList<String>? = null
 
     private var cMasterRecords: MutableMap<String, List<String>> = mutableMapOf()
     private var cMaster: String? = null
@@ -135,15 +132,20 @@ class RecordFragment : Fragment() {
     }
 
     private fun setFreeTime(cData: String) {
-        val unavailableTime = ArrayList(defaultTime)
+        unavailableTime = arrayListOf<String>(
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00"
+        )
 
         for (data in cMasterRecords) {
             if (data.key != cData)
                 continue
             for (time in data.value)
-                unavailableTime.remove(time)
+                unavailableTime?.remove(time)
         }
-        changeTime(unavailableTime.toList())
+        changeTime(unavailableTime!!.toList())
     }
 
     private fun changeTime(time: List<String>) {
@@ -205,6 +207,7 @@ class RecordFragment : Fragment() {
                     ),
                     imageTattoo
                 )
+            Toast.makeText(context, "Successful", Toast.LENGTH_SHORT).show()
             findNavController().popBackStack()
         }
 
@@ -228,7 +231,7 @@ class RecordFragment : Fragment() {
                     parent: AdapterView<*>?,
                     itemSelected: View, selectedItemPosition: Int, selectedId: Long
                 ) {
-                    cTime = defaultTime[selectedItemPosition]
+                    cTime = unavailableTime!![selectedItemPosition]
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {}

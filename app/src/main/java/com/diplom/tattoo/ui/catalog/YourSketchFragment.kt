@@ -66,7 +66,6 @@ class YourSketchFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putParcelable("image_sketch", imageUri)
                 findNavController().navigate(R.id.action_nav_your_sketch_to_nav_record, bundle)
-                Toast.makeText(context, "Successful", Toast.LENGTH_SHORT).show()
             } else
                 Toast.makeText(context, "Enter photo", Toast.LENGTH_SHORT).show()
         }
