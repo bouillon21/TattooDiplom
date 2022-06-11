@@ -10,12 +10,19 @@ import androidx.navigation.ui.setupWithNavController
 import com.diplom.tattoo.databinding.ActivityMainBinding
 import com.diplom.tattoo.model.SharedDatabaseViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var model: SharedDatabaseViewModel
 
+    // TODO: отключить темную тему
+    // TODO: добавить админ панель
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()

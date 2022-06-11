@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="wrap_content"
     android:backgroundTint="#C4C4C4"
     app:cardCornerRadius="10dp"
     android:elevation="8dp"
@@ -14,7 +14,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="wrap_content"
         android:padding="20dp">
 
         <TextView
@@ -42,9 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Master"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/labelTattoo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textService" />
+            app:layout_constraintTop_toBottomOf="@id/labelService" />
 
         <TextView
             android:id="@+id/textMaster"
@@ -63,7 +63,7 @@
             android:text="@string/date"
             app:layout_constraintBottom_toTopOf="@id/labelTime"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/textService"
+            app:layout_constraintStart_toEndOf="@+id/labelService"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -81,9 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/time"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/labelData"
-
             app:layout_constraintTop_toBottomOf="@id/labelData" />
 
         <TextView
@@ -94,6 +92,26 @@
             app:layout_constraintBottom_toBottomOf="@id/labelTime"
             app:layout_constraintStart_toEndOf="@id/labelTime"
             tools:text="@tools:sample/date/hhmm" />
+
+        <TextView
+            android:id="@+id/labelTattoo"
+            style="@style/DefaultHeaderStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_tattoo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/labelMaster" />
+
+        <TextView
+            android:id="@+id/textTattoo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="@id/labelTattoo"
+            app:layout_constraintStart_toEndOf="@id/labelTattoo"
+            tools:text="@tools:sample/first_names"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.diplom.tattoo.R
 import com.diplom.tattoo.data.DescriptionTatuInfo
 
-class DescriptionTatuInfoAdapter(Context: Context, private val tatu: List<DescriptionTatuInfo>) :
+class DescriptionTatuInfoAdapter(Context: Context, private val data: List<String>) :
     RecyclerView.Adapter<DescriptionTatuInfoAdapter.ViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(Context)
 
-    override fun getItemCount(): Int = tatu.size
+    override fun getItemCount(): Int = data.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -25,16 +25,14 @@ class DescriptionTatuInfoAdapter(Context: Context, private val tatu: List<Descri
         holder.bind(getItem(position))
     }
 
-    private fun getItem(position: Int) : DescriptionTatuInfo = tatu[position]
+    private fun getItem(position: Int) : String = data[position]
 
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-//        private val image: ImageView = itemView.findViewById(R.id.photo_gallery_avatar)
         private val title: TextView = itemView.findViewById(R.id.photo_gallery_name)
 
-        fun bind(description: DescriptionTatuInfo) {
-//            image.setImageResource(version.imageAndroid)
-            title.text = description.title
+        fun bind(description: String) {
+            title.text = description
         }
 
     }

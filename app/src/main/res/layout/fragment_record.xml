@@ -63,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@id/label_name_tattoo"/>
 
     <Spinner
+        android:id="@+id/spinner"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginStart="15dp"
@@ -93,6 +94,7 @@
 
     <Button
         android:id="@+id/dataButton"
+        android:visibility="gone"
         style="@style/DefaultButtonStyle"
         android:layout_width ="wrap_content"
         android:layout_height="wrap_content"
@@ -101,6 +103,25 @@
         app:layout_constraintStart_toEndOf="@id/data"
         app:layout_constraintTop_toTopOf="@id/label_data"
         app:layout_constraintBottom_toBottomOf="@id/label_data"/>
+
+    <TextView
+        android:id="@+id/label_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/DefaultHeaderStyle"
+        android:layout_marginTop="25dp"
+        android:text="@string/time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_data"/>
+
+    <Spinner
+        android:id="@+id/spinner_time"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintStart_toEndOf="@id/label_time"
+        app:layout_constraintTop_toTopOf="@id/label_time"
+        app:layout_constraintBottom_toBottomOf="@id/label_time"/>
 
     <Button
         android:id="@+id/buttonRecord"

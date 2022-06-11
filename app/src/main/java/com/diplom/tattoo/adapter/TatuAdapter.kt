@@ -8,11 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.diplom.tattoo.R
-import com.diplom.tattoo.data.Tatu
+import com.diplom.tattoo.data.Tattoo
+import com.squareup.picasso.Picasso
 
 class TatuAdapter(
     Context: Context,
-    private val tatu: List<Tatu>, private val clickListener: (position: Int) -> Unit
+    private val tatu: ArrayList<Tattoo>,
+    private val clickListener: (position: Int) -> Unit
 ) :
     RecyclerView.Adapter<TatuAdapter.ViewHolder>() {
 
@@ -21,7 +23,6 @@ class TatuAdapter(
     override fun getItemCount(): Int = tatu.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
         return ViewHolder(
             inflater.inflate(
                 R.layout.photo_gallery_item,
@@ -35,7 +36,7 @@ class TatuAdapter(
         holder.bind(getItem(position))
     }
 
-    private fun getItem(position: Int): Tatu = tatu[position]
+    private fun getItem(position: Int): Tattoo = tatu[position]
 
 
     class ViewHolder(
@@ -53,9 +54,9 @@ class TatuAdapter(
             }
         }
 
-        fun bind(version: Tatu) {
-            image.setImageResource(version.imageAndroid)
-            title.text = version.title
+        fun bind(data: Tattoo) {
+            Picasso.get().load(data.photoUrl[0]).placeholder(R.drawable.tattoo).into(image)
+            title.text = data.title
         }
 
     }
